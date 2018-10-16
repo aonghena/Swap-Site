@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+  <title>TextBook Swap</title>
+	<meta name="description" content="Textbook Swap">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="resource/categories.css">
+  <script src="index.js"></script>
+</head>
+<body>
+<% include partial/header.ejs %>
+
+<% include partial/user-navigation.ejs %>
+<section>
+  <nav>
+    <% include partial/site-navigation.ejs %>
+    <p id="breadcrumbs">Home > Categories</p>
+  </nav>
+
+  <article>
+    <h2>Textbooks:</h2>
+    <h4>Computer Science:</h4>
+    <%for (var item in books){
+      if(books[item].catalogCategory == "Computer Science"){
+      %>
+      <a href='/item/<%=books[item].itemCode%>'><%=books[item].itemName%></a><br />
+    <%}}%>
+    <h4>Math:</h4>
+    <%for (var item in books){
+      if(books[item].catalogCategory == "Math"){
+      %>
+      <a href='/item/<%=books[item].itemCode%>'><%=books[item].itemName%></a><br />
+    <%}}%>
+
+    <h4>Science:</h4>
+    <%for (var item in books){
+      if(books[item].catalogCategory == "Science"){
+
+      %>
+      <a href='/item/'<%=books[item].itemCode%>><%=books[item].itemName%></a><br />
+    <%}}%>
+
+  </article>
+</section>
+
+<% include partial/footer.ejs %>
+
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+  <title>TextBook Swap</title>
+	<meta name="description" content="Textbook Swap">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="resource/myItems.css">
+  <script src="index.js"></script>
+</head>
+<body>
+  <% include partial/header.ejs %>
+
+  <% include partial/user-navigation.ejs %>
+<section>
+  <nav>
+    <% include partial/site-navigation.ejs %>
+
+    <p id="breadcrumbs"> Home > My Books</p>
+
+  </nav>
+  </section>
+
+  <article>
+    <h1>Your Textbooks for swap</h1>
+    <table>
+  <tr>
+    <th>TextBook</th>
+    <th>Category</th>
+    <th>My Rating</th>
+    <th>Swapped</th>
+  </tr>
+  <tr>
+    <td>ABSTRACT ALGEBRA: An Introduction, 3rd Edition</td>
+    <td>Math</td>
+    <td>&#x2605;&#x2605;&#x2605;</td>
+    <td>&#9850;
+      <form action="/">
+        <button>Update</button>
+      </form>
+      <form action="/">
+        <button>Delete</button>
+      </form>
+  </tr>
+  <tr>
+    <td>Engineering Software as a Service: An Agile Approach Using Cloud Computing </td>
+    <td>Computer Science</td>
+    <td>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</td>
+    <td>&#9850; <form action="/">
+      <button>Update</button>
+    </form>
+    <form action="/">
+      <button>Delete</button>
+    </form>
+  </td>
+  </tr>
+  <tr>
+    <td>Murach's Java Servlets and JSP, 3rd Edition</td>
+    <td>Computer Science</td>
+    <td>&#x2605;&#x2605;&#x2605;&#x2605;</td>
+    <td> &#x2611;
+      <form action="/">
+        <button>Update</button>
+      </form>
+      <form action="/">
+        <button>Delete</button>
+      </form>
+    </td>
+  </tr>
+
+</table>
+</article>
+
+
+<% include partial/footer.ejs %>
+
+</body>
+</html>

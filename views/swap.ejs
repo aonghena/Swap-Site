@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+  <title>TextBook Swap</title>
+	<meta name="description" content="Textbook Swap">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/../resource/item.css">
+  <script src="index.js"></script>
+</head>
+<body>
+  <% include partial/header.ejs %>
+
+  <% include partial/user-navigation.ejs %>
+<section>
+  <nav>
+    <% include partial/site-navigation.ejs %>
+
+    <p id="breadcrumbs"> Home > Swap Book</p>
+
+  </nav>
+
+  <article>
+    <h1><%=book.itemName%></h1>
+    <h5><%=book.author%></h5>
+    <div id="imgButton">
+      <img src="<%=book.imageUrl%>" alt="bookImage"/>
+      <br />
+    </div>
+    <p>
+      <b><%=book.itemName%></b>
+       <%=book.des%>
+    </p>
+    <h3>Select an item from your available swaps</h3>
+    <a href="/item">ABSTRACT ALGEBRA</a><br/>
+    <a href="/item">Precalculus: Mathematics for Calculus</a>
+    <form action="/mySwaps">
+      <button class="swapForm">Confirm Swap</button>
+    </form>
+  </article>
+</section>
+
+<% include partial/footer.ejs %>
+
+
+</body>
+</html>

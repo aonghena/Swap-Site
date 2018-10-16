@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+  <title>TextBook Swap</title>
+	<meta name="description" content="Textbook Swap">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="resource/myItems.css">
+  <script src="index.js"></script>
+</head>
+<body>
+  <% include partial/header.ejs %>
+
+  <% include partial/user-navigation.ejs %>
+<section>
+  <nav>
+    <% include partial/site-navigation.ejs %>
+
+    <p id="breadcrumbs"> Home > My Books</p>
+
+  </nav>
+  </section>
+
+  <article>
+    <h1>Your Textbooks for swap</h1>
+    <table>
+    <tr>
+    <th>Book</th>
+    <th>Swap Offer</th>
+    </tr>
+    <tr>
+    <td><a>ABSTRACT ALGEBRA: An Introduction, 3rd Edition</a></td>
+    <td><a>Engineering Software as a Service: An Agile Approach Using Cloud Computing</a></td>
+    <td>
+      <form action="/myItems">
+        <button>Update</button>
+      </form>
+      <form action="/myItems">
+        <button>Reject</button>
+      </form>
+    </tr>
+    <tr>
+    <td><a>Engineering Software as a Service: An Agile Approach Using Cloud Computing</a></td>
+    <td><a>Murach's Java Servlets and JSP, 3rd Edition</a></td>
+    <td><form action="/myItems">
+      <button>Withdraw swap</button>
+    </form>
+    </td>
+    </tr>
+    </table>
+</article>
+
+
+<% include partial/footer.ejs %>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+  <title>TextBook Swap</title>
+	<meta name="description" content="Textbook Swap">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/../resource/item.css">
+  <script src="index.js"></script>
+</head>
+<body>
+  <% include partial/header.ejs %>
+
+  <% include partial/user-navigation.ejs %>
+<section>
+  <nav>
+    <% include partial/site-navigation.ejs %>
+
+    <p id="breadcrumbs"> Home > Categories > Item</p>
+
+  </nav>
+
+  <article>
+    <h1><%=book.itemName%></h1>
+    <h5><%=book.author%> | <%=book.catalogCategory%> | <%=book.rating%></h5>
+    <div id="imgButton">
+      <img src=<%=book.imageUrl%> alt="bookImage"/>
+      <br />
+      <form action="/swap/<%=book.itemCode%>">
+        <button>Swap it</button>
+        <button>Rate it</button>
+      </form>
+      <form action="/categories">
+        <button>Back</button>
+      </form>
+
+    </div>
+
+
+
+    <p>
+      <b><%=book.itemName%></b><br />
+       <%=book.des%>
+    </p>
+
+
+  </article>
+</section>
+
+<% include partial/footer.ejs %>
+
+
+</body>
+</html>
