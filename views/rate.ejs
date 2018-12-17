@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+  <title>TextBook Swap</title>
+	<meta name="description" content="Textbook Swap">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/resource/index.css">
+  <script src="index.js"></script>
+</head>
+<body>
+<% include partial/header.ejs %>
+
+<% include partial/user-navigation.ejs %>
+<section>
+  <nav>
+    <% include partial/site-navigation.ejs %>
+    <p id="breadcrumbs">Home</p>
+  </nav>
+
+  <article>
+    <h1>TestBook Swap</h1>
+    <% if(message != ""){%>
+      <label id="errorInput"><%=message%></label>
+      <br>
+      <br>
+    <%} %>
+    <img src=<%=Book.imageUrl%> alt="bookImage"/>
+    <h1><%=Book.itemName%></h1>
+
+    <br>
+    <form method="post" action="/rateItem?theItem=<%=Book.itemCode%>">     
+                    <label>Rate Item</label></td>
+                    <input name="rating" type="text" size="10" />
+    <input type="submit" value="Send Info" />
+        
+    </form>
+    
+    
+  </article>
+</section>
+
+<% include partial/footer.ejs %>
+
+
+</body>
+</html>

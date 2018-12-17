@@ -1,58 +1,152 @@
-function Book(itemCode, itemName, catalogCategory, author, des, rating, imageUrl) {
-  this.itemCode = itemCode;
-  this.itemName = itemName;
-  this.catalogCategory = catalogCategory;
-  this.author = author;
-  this.des = des;
-  this.rating = rating;
-  this.imageUrl = imageUrl;
+var Item = require(__dirname+"/Item");
+var mongoose = require('mongoose'); 
+mongoose.connect('mongodb://localhost:27017/swaps');
+var Schema = mongoose.Schema;
 
+var itemDataSchema = new Schema({
+  itemCode: {type: String, required: true},
+  itemName: {type: String, required: true},
+  catalogCategory: {type: String, required: true},
+  author: {type: String, required: true},
+  des: {type: String, required: true},
+  rating: {type: String, required: true},
+  imageUrl: {type: String, required: true}
+},{collection: 'Item'});
+
+var ItemData = mongoose.model('Item', itemDataSchema);
+
+module.exports.addItem =function(itemCode, itemName, catalogCategory, author, description, rating, imageUrl){
+  var item = new Item.Book(itemCode, itemName, catalogCategory, author, description, rating,imageUrl);
+  addItem(item);
 }
 
+function addItem (item){
+  var data = new ItemData(item);
+  data.save();
+}
 
-var AbstractAlgebra = new Book("M1", "ABSTRACT ALGEBRA: AN INTRODUCTION",
-"Math", "Thomas W. Hungerford","Is intended for a first undergraduate course in modern abstract algebra. Its flexible design makes it suitable for courses of various lengths and different levels of mathematical sophistication, ranging from a traditional abstract algebra course to one with a more applied flavor.  The book is organized around two themes: arithmetic and congruence. Each theme is developed first for the integers, then for polynomials, and finally for rings and groups, so students can see where many abstract concepts come from, why they are important, and how they relate to one another.",
-"* * *" , "/resource/abstract_algebra1.jpg");
-
-var JavaServlets = new Book( "CS1","Murach's Java Servlets and JSP, 3rd Edition","Computer Science", "Andrea Steelman", "This new edition of Murach's Java Servlets and JSP makes it easier than ever for Java developers to master web programming. It shows how to install and use the Tomcat server and the NetBeans IDE. It shows how to use JSPs and servlets to build secure and well-structured web applications that implement the MVC pattern. It shows how to use sessions, cookies, JavaBeans, EL, JSTL, and custom tags. It shows how to use JDBC or JPA to work with a MySQL database.", "* * *","/resource/MurachsJava.jpg");
-
-var ThinkJava = new Book("CS2", "Think Java", "Computer Science", "Allen B. Downey","Currently used at many colleges, universities, and high schools, this hands-on introduction to computer science is ideal for people with little or no programming experience. The goal of this concise book is not just to teach you Java, but to help you think like a computer scientist. You’ll learn how to program—a useful skill by itself—but you’ll also discover how to use programming as a means to an end.",
-"* * * *","/resource/ThinkJava.jpg")
-
-var ThinkData = new Book("CS3", "Think Data Structures", "Computer Science", "Allen B. Downey","If you’re a student studying computer science or a software developer preparing for technical interviews, this practical book will help you learn and review some of the most important ideas in software engineering—data structures and algorithms—in a way that’s clearer, more concise, and more engaging than other materials.",
-"* * * *","/resource/ThinkData.jpg");
-
-var Calculus4 = new Book("M2", "Calculus, 4th edition", "Math", "Michael Spivak" ,"Calculus combines leisurely explanations, a profusion of examples, a wide range of exercises and plenty of illustrations in an easy-going approach that enlightens difficult concepts and rewards effort. Ideal for honours students and mathematics majors seeking an alternative to doorstop textbooks and more formidable introductions to real analysis.   ",
-"*" , "/resource/Calculus4.jpg");
-
-var GlencoeGeometry = new Book("M3", "Glencoe Geometry", "Math", "S&P Global", "Personalized study resources include LearnSmart®, which uses adaptive review technology-enhanced questions to measure student accuracy, number of attempts, time spent, requests for help, and confidence level to predict what course topics a student is most likely to forget. LearnSmart revisits those topics using engaging resources to build retention for the End-of-Course Test.",
-"* *","/resource/GlencoeGeometry.jpg");
-
-var bookList = [AbstractAlgebra, Calculus4, JavaServlets, ThinkJava, ThinkData, GlencoeGeometry];
 
 function getItems(){
-  return bookList;
-}
-
-function getItem(itemID){
-  for (var x in bookList) {
-    if(bookList[x].itemCode == itemID){
-      return bookList[x];
+    try{
+      return ItemData.find({});
+    }catch(e){
+      console.log(e);
     }
-  }
-  return 0;
 }
 
+function getItem(itemCode){
+try{
+  return ItemData.findOne({"itemCode": itemCode});
+}catch (e){
+  return null;
+}
 
+}
+class UserItem{
+  constructor(userID, itemCode, itemName, catalogCategory, author, des, rating, imageUrl, uRating, Status, SwapItem, SwapItemRating, SwapperRating) {
+    this.userID = userID
+    this.itemCode = itemCode;
+    this.itemName = itemName;
+    this.catalogCategory = catalogCategory;
+    this.author = author;
+    this.des = des;
+    this.rating = rating;
+    this.imageUrl = imageUrl;
+    this.uRating = uRating;
+    this.Status = Status;
+    this.SwapItem = SwapItem;
+    this.SwapItemRating = SwapItemRating;
+    this.SwapperRating = SwapperRating;
+  }
+}
 
-//UserItem
+var UserItemDataSchema = new Schema({
+  userID: {type: String, required: true},
+  itemCode: {type: String, required: true},
+  itemName: {type: String, required: true},
+  catalogCategory: {type: String, required: true},
+  author: {type: String, required: true},
+  des: {type: String, required: true},
+  rating: {type: String, required: true},
+  imageUrl: {type: String, required: true},
+  uRating: {type: String, required: true},
+  Status: {type: String, required: true},
+  SwapItem: {type: String, required: true},
+  SwapItemRating: {type: String, required: true},
+  SwapperRating: {type: String, required: true}
+},{collection: 'UserItem'});
 
+var UserItemData = mongoose.model('UserItem', UserItemDataSchema);
 
-//UserProfile
+function getUserItems(user){
+  try{
+    return UserItemData.find({userID: user});
+  }catch (e){
+    console.log("error involving getting User Items");
+  }
+}
 
+function update(user, item, status){
+  try{
+  return UserItemData.findOneAndUpdate({userID: user, itemCode: item},{Status: status});
 
+}catch(e){
+  console.log("error " + e);
+}
+}
 
+function userItemRatingUpdate(user ,item, rating){
+  try{
+    console.log(user + " , " + item + " , " + rating +" ")
+    return UserItemData.findOneAndUpdate({userID: user, itemCode: item},{uRating: rating});
+  
+  }catch(e){
+    console.log("error " + e);
+  }
+}
 
-module.exports.bookList = bookList;
+function getAllItems(){
+  return new Promise((resolve, reject) => {
+    ItemData.find({}).then(docs => {
+   console.log();
+        resolve(docs);
+    }).catch(err => { return reject(err); })
+});
+}
+async function getAllItemsX(user){
+  if(!user){
+    return ItemData.find({});
+  }else{
+  var userItems = await getUserItems(user);
+  var n = []
+  for(x in userItems){
+    n.push(userItems[x].itemCode);
+  }
+  return ItemData.find({itemCode:{$nin: n}});
+  }
+}
+
+function deleteItem(item, userID){
+  console.log(item + "   delete      " +userID);
+  return UserItemData.findOneAndDelete({userID: userID ,itemCode: item});
+}
+
+function addItem(item, userID){
+  console.log(item + "  " + userID);
+  var u = new UserItem(userID, item.itemCode, item.itemName, item.catalogCategory, item.author, item.des, item.rating, item.imageUrl, 
+    "***", "available", "***", "***", "***");
+  console.log(u);
+  var data = new UserItemData(u);
+  data.save();
+  console.log(item + "     add    " +userID);
+}
+
+exports.addItem = addItem;
+exports.getAllItems = getAllItems;
+exports.update = update;
+exports.deleteItem = deleteItem;
+exports.getAllItemsX = getAllItemsX;
+exports.getUserItems = getUserItems;
 exports.getItems = getItems;
 exports.getItem = getItem;
+exports.userItemRatingUpdate = userItemRatingUpdate;

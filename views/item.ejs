@@ -19,13 +19,16 @@
   </nav>
 
   <article>
+    <input type="hidden" name="body" value="<%=book.itemCode%>">
     <h1><%=book.itemName%></h1>
     <h5><%=book.author%> | <%=book.catalogCategory%> | <%=book.rating%></h5>
     <div id="imgButton">
       <img src=<%=book.imageUrl%> alt="bookImage"/>
       <br />
-      <form action="/swap/<%=book.itemCode%>">
+      <form action="?action=offer&theItem=<%=book.itemCode%>" method="POST">
         <button>Swap it</button>
+      </form>
+      <form action="?action=rate&theItem=<%=book.itemCode%>" method="POST">
         <button>Rate it</button>
       </form>
       <form action="/categories">

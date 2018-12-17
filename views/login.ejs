@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+  <title>TextBook Swap</title>
+	<meta name="description" content="Textbook Swap">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/resource/index.css">
+  <script src="index.js"></script>
+</head>
+<body>
+<% include partial/header.ejs %>
+
+<% include partial/user-navigation.ejs %>
+<section>
+  <nav>
+    <% include partial/site-navigation.ejs %>
+    <p id="breadcrumbs">Login</p>
+  </nav>
+
+  <article>
+    <h1>TestBook Swap</h1>
+    <% if(message != ""){%>
+      <label id="errorInput"><%=message%></label>
+      <br>
+      <br>
+    <%} %>
+    <form method="post" action="/signin">
+
+        
+                    <label>Email:</label></td>
+               
+                    <input name="email" type="email" class ="firstName" size="40" />
+                
+            
+                    <label>Password:</label></td>
+               
+                    <input name="password" type="password" size="40" />
+             
+        <input type="submit" value="Send Info" />
+        
+    </form>
+    <p>Don't have an account?</p>
+    <form method="get" action="/register">
+        <button>Register Here</button>
+    </form>
+    
+  </article>
+</section>
+
+<% include partial/footer.ejs %>
+
+
+</body>
+</html>

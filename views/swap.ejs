@@ -18,6 +18,7 @@
 
   </nav>
 
+  
   <article>
     <h1><%=book.itemName%></h1>
     <h5><%=book.author%></h5>
@@ -30,11 +31,12 @@
        <%=book.des%>
     </p>
     <h3>Select an item from your available swaps</h3>
-    <a href="/item">ABSTRACT ALGEBRA</a><br/>
-    <a href="/item">Precalculus: Mathematics for Calculus</a>
-    <form action="/mySwaps">
-      <button class="swapForm">Confirm Swap</button>
-    </form>
+    <%for(var item in myBooks){
+      if(myBooks[item].Status == "available"){%>
+        <form action="?action=swapStart&theItem=<%=myBooks[item].itemCode%>&myItem=<%=book.itemCode%>" method="POST">
+            <button><%=myBooks[item].itemName%></button>
+        </form>
+      <%}}%>
   </article>
 </section>
 

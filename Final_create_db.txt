@@ -1,0 +1,56 @@
+﻿//HW4 
+//Alex Onghena
+
+//Create DB
+use swaps
+
+//Create Collections
+db.createCollection("Item");
+db.createCollection("UserItem");
+db.createCollection("User");
+db.createCollection("Feedback");
+db.createCollection("Offer");
+
+
+//Items
+db.Item.insert({itemCode: "M1", itemName: "ABSTRACT ALGEBRA: AN INTRODUCTION", catalogCategory: "Math",author: "Thomas W. Hungerford", des: "Is intended for a first undergraduate course in modern abstract algebra. Its flexible design makes it suitable for courses of various lengths and different levels of mathematical sophistication, ranging from a traditional abstract algebra course to one with a more applied flavor.  The book is organized around two themes: arithmetic and congruence. Each theme is developed first for the integers, then for polynomials, and finally for rings and groups, so students can see where many abstract concepts come from, why they are important, and how they relate to one another.",rating: "* * *", imageUrl: "/resource/abstract_algebra1.jpg"});
+db.Item.insert({itemCode: "CS1", itemName: "Murach's Java Servlets and JSP, 3rd Edition", catalogCategory: "Computer Science",author: "Allen B. Downey", des: "This new edition of Murach's Java Servlets and JSP makes it easier than ever for Java developers to master web programming. It shows how to install and use the Tomcat server and the NetBeans IDE. It shows how to use JSPs and servlets to build secure and well-structured web applications that implement the MVC pattern. It shows how to use sessions, cookies, JavaBeans, EL, JSTL, and custom tags. It shows how to use JDBC or JPA to work with a MySQL database.",rating: "****", imageUrl: "/resource/ThinkJava.jpg"});
+db.Item.insert({itemCode: "CS3", itemName: "Think Data Structures", catalogCategory: "Computer Science", author: "Allen B. Downey",des:"If you’re a student studying computer science or a software developer preparing for technical interviews, this practical book will help you learn and review some of the most important ideas in software engineering—data structures and algorithms—in a way that’s clearer, more concise, and more engaging than other materials.",
+rating: "* * * *", imageUrl: "/resource/ThinkData.jpg"});
+db.Item.insert({itemCode:"M2", itemName:"Calculus, 4th edition",  catalogCategory: "Math", author:"Michael Spivak", des: "Calculus combines leisurely explanations, a profusion of examples, a wide range of exercises and plenty of illustrations in an easy-going approach that enlightens difficult concepts and rewards effort. Ideal for honours students and mathematics majors seeking an alternative to doorstop textbooks and more formidable introductions to real analysis. ",
+rating:"* *",imageUrl:"/resource/Calculus4.jpg"});
+db.Item.insert({"itemCode":"CS2", "itemName":"Think Java", "catalogCategory":"Computer Science", "author":"Allen B. Downey",des:"Currently used at many colleges, universities, and high schools, this hands-on introduction to computer science is ideal for people with little or no programming experience. The goal of this concise book is not just to teach you Java, but to help you think like a computer scientist. You’ll learn how to program—a useful skill by itself—but you’ll also discover how to use programming as a means to an end.",
+rating:"* * * *",imageUrl:"/resource/ThinkJava.jpg"});
+db.Item.insert({itemCode:"M3", itemName:"Glencoe Geometry",  catalogCategory: "Math", author:"Michael Spivak", des: "Geometry combines leisurely explanations, a profusion of examples, a wide range of exercises and plenty of illustrations in an easy-going approach that enlightens difficult concepts and rewards effort. Ideal for honours students and mathematics majors seeking an alternative to doorstop textbooks and more formidable introductions to real analysis. ",
+rating:"* *",imageUrl:"/resource/GlencoeGeometry.jpg"});
+
+
+//Users
+//defualt passwords for users is "test"
+//U: sam@gmail.com P: test
+//U: sara@gmail.com P: test
+db.User.insert({userID: "S2", password: "db57a665c56f12e7909ac14ce1a1e9447764a5adb4cedc050e9abe2a84d9ce5445e182f4c8de40182c3de91f1f6aff134685c1ec0d850195661152f824222ff4", firstName: "Sam",lastName: "Smith",email: "sam@gmail.com",addr1: "11 UNCC",addr2: "133 UNCC",state: "North Carolina",city: "clt", postCode: "28223",country: "USA"});
+db.User.insert({userID: "S1", password: "db57a665c56f12e7909ac14ce1a1e9447764a5adb4cedc050e9abe2a84d9ce5445e182f4c8de40182c3de91f1f6aff134685c1ec0d850195661152f824222ff4", firstName: "Sarah",lastName: "Smith",email: "sara@gmail.com",addr1: "12 UNCC",addr2: "13 UNCC",state: "North Carolina",city: "clt",postCode: "28223",country: "USA"});
+
+
+//UserItems
+db.UserItem.insert({userID: "S1", itemCode: "CS3", itemName: "Think Data Structures", catalogCategory: "Computer Science", author: "Allen B. Downey",des:"If you’re a student studying computer science or a software developer preparing for technical interviews, this practical book will help you learn and review some of the most important ideas in software engineering—data structures and algorithms—in a way that’s clearer, more concise, and more engaging than other materials.",
+rating: "* * * *", imageUrl: "/resource/ThinkData.jpg",uRating: "***",Status: "available",SwapItem: "",SwapItemRating: "",SwapperRating: ""});
+db.UserItem.insert({userID: "S2", itemCode:"M2", itemName:"Calculus, 4th edition",  catalogCategory: "Math", author:"Michael Spivak", des: "Calculus combines leisurely explanations, a profusion of examples, a wide range of exercises and plenty of illustrations in an easy-going approach that enlightens difficult concepts and rewards effort. Ideal for honours students and mathematics majors seeking an alternative to doorstop textbooks and more formidable introductions to real analysis. ",
+rating:"* *",imageUrl:"/resource/Calculus4.jpg", uRating: "****",Status: "available",SwapItem: "",SwapItemRating: "",SwapperRating: ""});
+db.UserItem.insert({userID: "S1", "itemCode":"CS2", "itemName":"Think Java", "catalogCategory":"Computer Science", "author":"Allen B. Downey",des:"Currently used at many colleges, universities, and high schools, this hands-on introduction to computer science is ideal for people with little or no programming experience. The goal of this concise book is not just to teach you Java, but to help you think like a computer scientist. You’ll learn how to program—a useful skill by itself—but you’ll also discover how to use programming as a means to an end.",
+rating:"* * * *",imageUrl:"/resource/ThinkJava.jpg" ,uRating: "*",Status: "available",SwapItem: "",SwapItemRating: "",SwapperRating: ""});
+
+
+
+//templates 
+/*
+db.Item.insert({itemCode:"", itemName:"",  catalogCategory: "", author:"", des: "", rating:"",imageUrl:""});
+db.User.insert({userID: "", password: "", firstName: "",lastName: "",email: "",addr1: "",addr2: "",state: "",city: "",postCode: "",country: ""});
+db.UserItem.insert({userID: "", "itemCode":"", "itemName":"", "catalogCategory":"", "author":"",des:"", rating:"",imageUrl:"" ,Rating: "",Status: "",SwapItem: "",SwapItemRating: "",SwapperRating: ""});
+db.Offer.insert({userID: "", itemCodeOwn:"", itemCodeWant:"",itemStatus:""});
+db.Feedback.insert({offerID: "", userID1: "", userID2: "", rating: ""});
+db.Feedback.insert({offerID: "", itemID: "", userID: "", rating: ""});
+*/
+
+

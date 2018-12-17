@@ -23,28 +23,36 @@
     <h1>Your Textbooks for swap</h1>
     <table>
     <tr>
-    <th>Book</th>
+    <th>Book ID</th>
     <th>Swap Offer</th>
+    <th>Rating</th>
+    <th>Action</th>
     </tr>
-    <tr>
-    <td><a>ABSTRACT ALGEBRA: An Introduction, 3rd Edition</a></td>
-    <td><a>Engineering Software as a Service: An Agile Approach Using Cloud Computing</a></td>
-    <td>
-      <form action="/myItems">
-        <button>Update</button>
-      </form>
-      <form action="/myItems">
-        <button>Reject</button>
-      </form>
-    </tr>
-    <tr>
-    <td><a>Engineering Software as a Service: An Agile Approach Using Cloud Computing</a></td>
-    <td><a>Murach's Java Servlets and JSP, 3rd Edition</a></td>
-    <td><form action="/myItems">
-      <button>Withdraw swap</button>
-    </form>
-    </td>
-    </tr>
+    <%for (var item in Book){%>
+      <tr>
+         <%if (Book[item].itemStatus == "pending"){%>
+        <td><%=Book[item].itemCodeOwn%></td>
+        <td><%=Book[item].itemCodeWant%></td>
+        <td><%=Book[item].rating%></td>
+        <td> 
+            
+          <form action="?action=accept&theItem=<%=Book[item].itemCodeOwn%>" method="POST">
+            <button>Accept</button>
+          </form>
+          <form action="?action=reject&theItem=<%=Book[item].itemCodeOwn%>" method="POST">
+            <button>Reject</button>
+          </form>
+          
+          <form action="?action=withdraw&theItem=<%=Book[item].itemCodeOwn%>" method="POST">
+            <button>Withdraw swap</button>
+            </form>
+            <%}%>
+
+        </td>
+      </tr>
+
+  <%}%>
+    
     </table>
 </article>
 

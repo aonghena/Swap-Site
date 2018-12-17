@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+  <title>TextBook Swap</title>
+	<meta name="description" content="Textbook Swap">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/resource/index.css">
+  <script src="index.js"></script>
+</head>
+<body>
+<% include partial/header.ejs %>
+
+<% include partial/user-navigation.ejs %>
+<section>
+  <nav>
+    <% include partial/site-navigation.ejs %>
+    <p id="breadcrumbs">Register</p>
+  </nav>
+
+  <article>
+    <h1>TestBook Swap</h1>
+    <form method="post" action="/register">
+        
+                    <label>Email:</label></td>
+               
+                    <input name="email" type="email" size="40" />
+                    <br>
+            
+                    <label>Password:</label></td>
+               
+                    <input name="password" type="password" size="40" />
+                    <br>
+                    <label>firstName:</label></td>
+               
+                    <input name="firstName" type="text" class ="firstName" size="40" />
+                    <br>
+            
+                    <label>lastName:</label></td>
+               
+                    <input name="lastName" type="text" size="40" />
+                    <br>
+                    <label>Address:</label></td>
+               
+                    <input name="addr1" type="text" class ="firstName" size="40" />
+                    <br>
+
+            
+                    <label>Address 2:</label></td>
+               
+                    <input name="addr2" type="text" size="40" />
+                    <br>
+
+                    <label>State:</label></td>
+               
+                    <input name="state" type="text" class ="firstName" size="40" />
+                    <br>
+                
+                    <label>City:</label></td>
+               
+                    <input name="city" type="text" size="40" />
+                    <br>
+
+                    <label>Zip:</label></td>
+               
+                    <input name="postCode" type="text" size="40" />
+                    <br>
+
+                    <label>Country:</label></td>
+               
+                    <input name="country" type="text" size="40" />
+                    <br>
+             
+        <input type="submit" value="Send Info" />
+        
+    </form>
+    <p>Already have an account?</p>
+    <form method="GET" action="/signin">
+        <button>Login Here</button>
+    </form>
+    
+  </article>
+</section>
+
+<% include partial/footer.ejs %>
+
+
+</body>
+</html>

@@ -4,7 +4,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: ;
+
 }
 
 img{
@@ -15,6 +15,9 @@ img{
 
 }
 
+#errorInput{
+    color: red;
+}
 
 
 #graph{
